@@ -136,14 +136,14 @@ class SlotGameEngine{
             
             var currentSymbols = Array();
             for(var count =0; count < reels.length;count ++){
-                console.log('count'+count);
+                //console.log('count'+count);
                 reels[count].images.pop();
                 reels[count].images.shift();
-                currentSymbols[count]['top']= reels[count].images[0];
+                /* currentSymbols[count]['top']= reels[count].images[0];
                 currentSymbols[count]['middle']= reels[index].images[1];
-                currentSymbols[count]['bottom']= reels[index].images[2];
+                currentSymbols[count]['bottom']= reels[index].images[2]; */
             }
-            console.dir(currentSymbols);
+            //console.dir(currentSymbols);
         }
     }
 }
