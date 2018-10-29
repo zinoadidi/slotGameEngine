@@ -1,0 +1,27 @@
+#loadingContainer{
+	position: fixed ;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background-image: url("../img/background.png");
+}
+
+#loadingBar{
+	position: relative;
+	top: 37%;
+	bottom: 40%;
+	vertical-align: center;
+	text-align: center;
+	z-index: 10;
+}
+
+#loadingImg{
+	width: 300px;
+}
+#loadingImg2{
+	width: 120px;
+	margin-left:-40px;
+	-webkit-transform: rotate(-90deg);
+}

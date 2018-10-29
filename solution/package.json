@@ -1,0 +1,20 @@
+{
+  "name": "slot-game",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack --watch --info-verbosity verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}

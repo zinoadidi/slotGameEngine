@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slot Machine</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" type="text/css" href="css/loader.css">
+  	<link href="css/w3.css" rel="stylesheet">
+  	<link href="css/app.css" rel="stylesheet">
+</head>
+<body class="background-color">
+    <!-- display container for game -->
+	<div id="display" class="hidden" style="" >
+		<div id = "top-area" class="w3-col s12 m12 l12 w3-container w3-white">
+			<div class="w3-col m3 l4 s3" id="logo-div">
+				<img src="img/loadingIcon.png" class="logo"/>
+			</div>
+			<div class="w3-col m5 l4 s5 w3-container w3-margin-top">
+				<!-- /// -->
+			</div>
+			<div class="w3-col m4 l4 s4">
+				<p></p>
+				<button class="w3-btn w3-padding w3-margin-left w3-border w3-white w3-text-red w3-border-red w3-margin-top w3-left">Game Mode</button>
+			</div>
+		</div>		
+		<div id="game-area" class="w3-container w3-col s12 m8 l8">
+			<div id = "reel-container" class="w3-container"></div>
+			<div id="spin-btn" class="w3-container">
+				<button id="spin_btn" class="w3-btn w3-padding w3-large w3-bar spin-btn w3-white w3-text-purple w3-bottombar w3-topbar w3-border-pink w3-hover-purple"><h3>SPIN</h3></button>
+			</div>
+		</div>
+		<div id = "pay-table" class="w3-container w3-white w3-col s12 m4 l4">
+			<p class="w3-hide-large w3-hide-medium w3-margin"></p>
+			<div class="w3-border">
+				<center>
+					<div class="w3-text-purple"><h3>BALANCE</h3></div>
+					<input type="number" id="balanceInput" class="w3-input w3-border-pink w3-center"/>
+				</center>
+			</div>
+			<div class="w3-border">
+				<h3 class="w3-leftbar w3-border-gray w3-white w3-text-purple w3-center">Pay Table</h3>
+				<ul class="w3-ul w3-striped">
+					<li class="w3-hover-gray">3 CHERRY symbols on top line 2000</li>
+					<li>3 CHERRY symbols on center line 1000</li>
+					<li>3 CHERRY symbols on bottom line 4000</li>
+					<li>3 7 symbols on any line 150</li>
+					<li>Any combination of CHERRY and 7 on any line 75</li>
+					<li>3 3xBAR symbols on any line 50</li>
+					<li>3 2xBAR symbols on any line 20</li>
+					<li>3 BAR symbols on any line 10</li>
+					<li>Combination of any BAR symbols on any line 5</li>
+				</ul>
+			</div>
+		</div>
+		<div id = "debug-area" class="w3-col s12 m4 l4"></div>
+	</div>
+    <!--  loading container -->
+	<div id="loadingContainer" style="" class="loadingbar">
+		<div id="loadingBar" class="w3-animate-zoom w3-center" style="text-align: center">
+			<center>
+				<img src="img/loadingIcon.png" id="loadingImg" class="w3-animate-fading">
+				<br/>
+				<img src="img/loading.gif" id="loadingImg2" class="">
+			</center>
+		</div>	
+    </div>
+    <!-- disable interaction overlay -->
+	<div id="interactableOverlay" style="" class="interactable"></div>
+</body>
+<div id="audioDiv"></div>
+<footer>
+	<script type="text/javascript" src="js/app.js"></script>
+</footer>
+
+</html> 
