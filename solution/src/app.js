@@ -47,25 +47,32 @@ spin_btn.addEventListener(
     function(){
         // call spin reel function on each reel
         game.disableInteraction();
-        new spinRequest();
+        new spinRequest(0);
+        new spinRequest(1);
+        new spinRequest(2);
     }
 )
 
 
-function spinRequest(){
+function spinRequest(counter){
     var reelObjects = game.storage.get('reelObjects');
+    
     var newBalance = parseInt(game.storage.get('balance')) - 2;
     document.querySelector("#balanceInput").value = newBalance;
     game.storage.set('balance',newBalance);
     const spinSpeed = 200;  
     var spinningTime = 2000;
-     for(let counter = 0; counter < reelObjects.length; counter ++){ 
+    //var counter = 0;
+     //for(counter = 0; counter < reelObjects.length; counter ++){ 
        
         game.spinningReels[counter] = setInterval(function(){   
-            reelObjects = game.storage.get('reelObjects');
-            const reel = reelObjects[counter];
+
+           
             
-             
+            var newReelObjects = game.storage.get('reelObjects');
+            var reel = newReelObjects[counter];
+            
+            
              /// miliseconds
             game.spinReel(reel,counter)
             /* .then(
@@ -91,7 +98,7 @@ function spinRequest(){
         );
 
         spinningTime += 500;
-    }
-
+  //  }
+    
 }
 

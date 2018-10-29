@@ -88,18 +88,25 @@ class SlotGameEngine{
         }
         this.spinReel = function(reel,index){
            
+                reel = this.storage.get('reelObjects');
+                reel = reel[index]; 
+           
+                console.dir(reel);
+                console.log(index)
+             
             let firstElement = reel['images'].shift();
             reel['images'].push(firstElement);
             
-            var count = 0;
-            for ( count = 0;count < reel['images'].length; count++){
+
+            for (let count = 0;count < reel['images'].length; count++){
                 let DOMReel = document.querySelector(`#${reel.id}`);
                 DOMReel.childNodes[count]['src'] = reel['images'][count].src;
             }
             let reelObjects = this.storage.get('reelObjects');
             reelObjects[index] = reel;
             this.storage.set('reelObjects',reelObjects);
-            return Promise.resolve(reel);
+            
+           // return Promise.resolve(reel);
             
         } 
 
@@ -132,17 +139,17 @@ class SlotGameEngine{
         }
        
         this.calculateScore = function(){
-            var reels = this.storage.get('reelObjects');
+            /* var reels = this.storage.get('reelObjects');
             
             var currentSymbols = Array();
             for(var count =0; count < reels.length;count ++){
                 //console.log('count'+count);
                 reels[count].images.pop();
                 reels[count].images.shift();
-                /* currentSymbols[count]['top']= reels[count].images[0];
+                currentSymbols[count]['top']= reels[count].images[0];
                 currentSymbols[count]['middle']= reels[index].images[1];
-                currentSymbols[count]['bottom']= reels[index].images[2]; */
-            }
+                currentSymbols[count]['bottom']= reels[index].images[2]; 
+            } */
             //console.dir(currentSymbols);
         }
     }
