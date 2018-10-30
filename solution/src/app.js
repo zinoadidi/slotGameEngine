@@ -15,6 +15,8 @@ import {SlotGameEngine} from './SlotGameEngine.js';
 let game = new SlotGameEngine();
 game.spinningReels = [];
 game.numOfRequestCompleted = 0;
+const spin_btn = document.querySelector("#spin_btn");
+
 game.createReelObj(
     3,
     [
@@ -41,15 +43,22 @@ game.createReelObj(
 
 
 ////////////// Handle events on page \\\\\\\\\\\\\\\\\
-const spin_btn = document.querySelector("#spin_btn");
+
 spin_btn.addEventListener(
     "click",
     function(){
         // call spin reel function on each reel
         game.disableInteraction();
+        document.querySelector("#balanceInput").value =  game.deductBalance(2);
+        var reels = game.storage.get('reelObjects');
+        sessionStorage.start = JSON.stringify(game.storage.get('reelObjects'));
+        console.log("start")
+        console.dir(reels);
         new spinRequest(0);
         new spinRequest(1);
         new spinRequest(2);
+
+        
     }
 )
 
@@ -57,9 +66,7 @@ spin_btn.addEventListener(
 function spinRequest(counter){
     var reelObjects = game.storage.get('reelObjects');
     
-    var newBalance = parseInt(game.storage.get('balance')) - 2;
-    document.querySelector("#balanceInput").value = newBalance;
-    game.storage.set('balance',newBalance);
+    
     const spinSpeed = 200;  
     var spinningTime = 2000;
     //var counter = 0;
@@ -82,23 +89,32 @@ function spinRequest(counter){
                 }
             ) */
         }, spinSpeed);
-        
+
         setTimeout(
             function(){ 
                 clearInterval(game.spinningReels[counter]) 
                 game.numOfRequestCompleted ++;
-
-                if(game.spinningReels.length <=  game.numOfRequestCompleted){
-                    game.numOfRequestCompleted = 0;
+                
+                if(game.spinningReels.length ==  game.numOfRequestCompleted){
+                    console.log("game ending now")
+                    sessionStorage.end = JSON.stringify(game.storage.get('reelObjects'));
+                    
                     game.enableInteraction();
-                    game.calculateScore();
+                    game.calculateScore().then(
+                        function(response){
+
+                            //rest some basic variables 
+                            game.spinningReels = [];
+                            game.numOfRequestCompleted = 0;
+                        }
+                    )
                 }
             },
             spinningTime
         );
-
         spinningTime += 500;
   //  }
-    
+     
 }
+
 
