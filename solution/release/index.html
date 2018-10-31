@@ -19,7 +19,7 @@
 			</div>
 			<div class="w3-col m4 l4 s4">
 				<p></p>
-				<button class="w3-btn w3-padding w3-margin-left w3-border w3-white w3-text-red w3-border-red w3-margin-top w3-left">Game Mode</button>
+				<button class="w3-btn w3-padding w3-margin-left w3-border w3-white w3-text-red w3-border-red w3-margin-top w3-left" id="game_mode_btn">Game Mode</button>
 			</div>
 		</div>		
 		<div id="game-area" class="w3-container w3-col s12 m8 l8">
@@ -38,7 +38,7 @@
 			</div>
 			<div class="w3-border">
 				<h3 class="w3-leftbar w3-border-gray w3-white w3-text-purple w3-center">Pay Table</h3>
-				<ul class="w3-ul w3-striped">
+				<ul class="w3-ul w3-striped" id="payTableList">
 					<li class="w3-hover-gray">3 CHERRY symbols on top line 2000</li>
 					<li>3 CHERRY symbols on center line 1000</li>
 					<li>3 CHERRY symbols on bottom line 4000</li>
@@ -51,7 +51,93 @@
 				</ul>
 			</div>
 		</div>
-		<div id = "debug-area" class="w3-col s12 m4 l4"></div>
+		<div id="debug_area" class="w3-col s12 m4 l4">
+			<div class="w3-right w3-margin">
+				<div class="">
+					<button id="close_debug_area" class="w3-margin-bottom w3-right w3-button w3-black w3-text-red"><h3>X</h3></button>
+					<hr/>
+				</div>
+				<div id="gameSetToFixedMode" class="w3-container">
+					<div class="w3-medium">Current Mode: <b class="w3-text-red">Fixed </b><button class="w3-btn w3-purple" id="switchGameModeRandom">SWITCH</button></div>
+					<div id="fixedGameModeContent">
+						<form class="w3-form">
+							<div class=""><h3>Reel 1</h3></div>
+							<div class="w3-container">
+								<div>Symbol:</div>
+								<select class="w3-select" required>
+									<option value="3xBAR">3xBAR</option>
+									<option value="BAR">BAR</option>
+									<option value="2xBAR">2xBAR</option>
+									<option value= "7">7</option>
+									<option value="CHERRY">CHERRY</option>
+								</select>
+							</div>
+							<div class="w3-container">
+								<label>Position:</label>
+								<select class="w3-select" required>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value= "4">4</option>
+									<option value="5">5</option>
+								</select>
+							</div>
+							<div class=""><h3>Reel 2</h3></div>
+							<div class="w3-container">
+								<div>Symbol:</div>
+								<select class="w3-select" required>
+									<option value="3xBAR">3xBAR</option>
+									<option value="BAR">BAR</option>
+									<option value="2xBAR">2xBAR</option>
+									<option value= "7">7</option>
+									<option value="CHERRY">CHERRY</option>
+								</select>
+							</div>
+							<div class="w3-container">
+								<label>Position:</label>
+								<select class="w3-select" required>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value= "4">4</option>
+									<option value="5">5</option>
+								</select>
+							</div>
+							<div class=""><h3>Reel 3</h3></div>
+							<div class="w3-container">
+								<div>Symbol:</div>
+								<select class="w3-select" required>
+									<option value="3xBAR">3xBAR</option>
+									<option value="BAR">BAR</option>
+									<option value="2xBAR">2xBAR</option>
+									<option value= "7">7</option>
+									<option value="CHERRY">CHERRY</option>
+								</select>
+							</div>
+							<div class="w3-container">
+								<label>Position:</label>
+								<select class="w3-select" required>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value= "4">4</option>
+									<option value="5">5</option>
+								</select>
+							</div>
+							<div class="w3-container">
+								<button type="submit" class="w3-bar w3-btn w3-center w3-black w3-text-red"><b>SUBMIT</b></button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div id="gameSetToRandomMode" class="w3-container">
+					<div class="w3-medium">Current Mode: <b class="w3-text-red">Random </b><button class="w3-btn w3-purple" id="switchGameModeFixed"><small>SWITCH</small></button></div>
+					<div>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
     <!--  loading container -->
 	<div id="loadingContainer" style="" class="loadingbar">

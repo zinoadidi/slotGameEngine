@@ -16,7 +16,7 @@ class SlotGameEngine{
                 'totalReels':0,
                 'balance':0
             }
-        }
+        } 
         
         this.config = function(reelObjects,balance){
             this.storage.set('balance',balance);
@@ -69,9 +69,14 @@ class SlotGameEngine{
                     try{
                         // load images
                         for(let counter =0; counter < imagesArray.length; counter ++){
+                            var imageName = imagesArray[counter].split("/");
+                            imageName =imageName[imageName.length-1]
+                            imageName =imageName.split(".");
+                            imageName =imageName[0]
                             images[counter] = {
                                 "symbolId": counter,
-                                "src": imagesArray[counter]
+                                "src": imagesArray[counter],
+                                "imageName": imageName
                             }
                         }
                         // create reels object
@@ -92,10 +97,10 @@ class SlotGameEngine{
         this.spinReel = function(reel,index){
            
             reel = this.storage.get('reelObjects');
+           // console.log(reel[0].images[0]);
+            
             reel = reel[index]; 
         
-            console.dir(reel);
-            console.log(index)
              
             let firstElement = reel['images'].shift();
             reel['images'].push(firstElement);
@@ -146,26 +151,104 @@ class SlotGameEngine{
             loadingScr.classList.remove('hidden');
         }
        
-        this.calculateScore = async function(){
+        this.calculateScore = async function(winningCombinations){
             //removed dom manipulation temorary
            
-            var reels = this.storage.get('reelObjects');
-            console.log("End")
-            console.dir(reels);
-            /*  
-            var currentSymbols = []; */
-            //for(var count =0; count < reels.length;count ++){
-              /*   reels[count].images.pop();
-                reels[count].images.shift();
-                console.dir(reels); */
-                
-                /* currentSymbols[count]['top']= reels[count].images[0];
-                currentSymbols[count]['middle']= reels[index].images[1];
-                currentSymbols[count]['bottom']= reels[index].images[2];  */
-           // }
-            //console.dir(currentSymbols);
-            var result = 0;
-            return Promise.resolve(result);
+            let reels = this.storage.get('reelObjects');
+             
+            let currentSymbols = {
+                'top': [],
+                'middle': [],
+                'bottom': [] 
+            }
+           
+            for(var count =0; count<reels.length; count ++){
+               
+                currentSymbols.top.push(reels[count].images[0])
+                currentSymbols.middle.push(reels[count].images[1])
+                currentSymbols.bottom.push(reels[count].images[2])
+            }
+            console.dir(currentSymbols);
+            var wins = [];
+            
+            winningCombinations.forEach( function(value,key){
+                var winPosition = value.position;       
+                if(winPosition.length > 1){
+
+                }else{
+                    winPosition = winPosition[0]
+                    console.log(winPosition)
+                }
+                var count = 0;
+                var win = false;
+                switch(winPosition){
+                    case "top":
+                    var numPresent = 0;
+                        for(count = 0; count < currentSymbols.top.length; count++){
+                            console.log(currentSymbols.top[count].imageName+":"+ value.item)
+                            if(currentSymbols.top[count].imageName ==  value.item){
+                                win = true;
+                                numPresent +=1;
+                            }else{
+                                win = false;
+                            }                            
+                        }
+                        console.log(win)
+                        console.log(numPresent)
+                        if(win && (numPresent == value.nOfTimePresent)){
+                            wins.push(value); 
+                            win = false;
+                        } 
+                    break;
+                    case "center":
+                    var numPresent = 0;
+                        for(count = 0; count < currentSymbols.middle.length; count++){
+                            if(currentSymbols.middle[count].imageName ==  value.item){
+                                win = true;
+                                numPresent +=1;
+                            }else{
+                                win = false;
+                            }                            
+                        }
+                        console.log(win)
+                        console.log(numPresent)
+                        if(win && (numPresent == value.nOfTimePresent)){
+                            wins.push(value); 
+                            win = false;
+                        } 
+                    break;
+                    case "bottom":
+                        var noPresent = 0;
+                        for(count = 0; count < currentSymbols.bottom.length; count++){
+                            if(currentSymbols.bottom[count].imageName ==  value.item){
+                                win = true;
+                                numPresent +=1;
+                            }else{
+                                win = false;
+                            }                            
+                        }
+                        console.log(win)
+                        console.log(numPresent)
+                        if(win && (numPresent == value.nOfTimePresent)){
+                            wins.push(value); 
+                            win = false;
+                        }  
+                    break;
+                    case "any":
+                    break;
+                    case "other":
+                    break;
+                    default:
+                    break;
+                }
+            });
+            console.dir(wins)
+            
+            /* for(var counter = 0; counter<winningCombinations.length; counter++){
+                console.dir(winningCombinations[counter]);
+            } */
+
+            return Promise.resolve(reels);
         }
     }
 }

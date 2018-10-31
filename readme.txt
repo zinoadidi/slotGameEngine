@@ -1,5 +1,5 @@
 ##################
-slot game was wriiten in JS ES6
+## slot game was wriiten in JS ES6
 compiled with webpack using node
 app is written in module format with sections of code abstracted in classes.
 
@@ -20,6 +20,10 @@ to set up this code base for development
 * run npm run-script build or webpack --watch --info-verbosity verbose to compile the code
 
 
-::: i wasnt able to finish the game before the deadline due to the timing and concept as i didnt get much time to learn pixijs whixh i intended to use initially.
-
 ::: i have continued work on this task regardless and can provide the finshed copy if required
+
+
+## Note:
+* reel image naming must follow the convention of 'imageName'.'File Format' e.g 'Cherry.png'
+* reel is highly configurable and a new type of reel can be created just by calling the SlotGameEngine with number of reels and images to be used.
+* while this flexiblity exists, i was forced to work based on 3 reels in some parts of the code so as to improve delivery time
